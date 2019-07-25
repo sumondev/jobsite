@@ -1,19 +1,18 @@
 
 @php
-  $student_id=Session::get('student_id');
-      $student_profile_view=DB::table('student_tbl')
+  
+
+      $admin_id=Session::get('admin_id');
+      $admin_profile_view=DB::table('admin_tbl')
                    ->select('*')
-                   ->where('student_id',$student_id)
+                   ->where('admin_id',$admin_id)
                    ->first();
+
+                   
+
 
                    /* this function is used for retriving student information in this page  from databse*/
 @endphp
-
-
-
-
-
-
 
 
 
@@ -26,7 +25,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Student enrolbvmlment</title>
+  <title>JOB SITE</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('/admin/node_modules/mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('/admin/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css')}}">
@@ -61,7 +60,7 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar navbar-light col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper">
-        <a class="navbar-brand brand-logo" href="{{URL::TO('/student_dashboard')}}"><img src="admin/images/dash.png" alt="Logo"></a>
+        <a class="navbar-brand brand-logo" href="{{URL::TO('/admin_dashboard')}}"><img src="admin/images/dash.png" alt="Logo"></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <button class="navbar-toggler navbar-toggler align-self-center mr-2" type="button" data-toggle="minimize">
@@ -92,16 +91,10 @@
             {{--   <i class="mdi mdi-message-outline"></i> --}}
             <i class="mdi mdi-details"></i>
 
-           {{--    <i class="mdi mdi-filter-list"></i> --}}
-              {{--  <div class="sender-img">
-                  <img src="admin/images/menu.png" alt="">
-             
-                </div> --}}
-
-              {{-- <span class="mdi mdi-filter-list"></span> --}}
+         
             </a>
             <div class="dropdown-menu navbar-dropdown mail-notification" aria-labelledby="MailDropdown">
-              <a class="dropdown-item" href="{{URL::TO('/student_profile')}}">
+              <a class="dropdown-item" href="{{URL::TO('/admin_profile')}}">
                 <div class="sender-img">
                   <img src="/admin/images/profile.png" alt="">
                
@@ -112,7 +105,7 @@
                 </div>
               </a>
               
-              <a class="dropdown-item" href="{{URL::TO('/studentsettings')}}">
+              <a class="dropdown-item" href="{{-- {{URL::TO('/studentsettings')}} --}}">
                 <div class="sender-img">
                   <img src="/admin/images/settings.png" alt="">
              
@@ -123,7 +116,7 @@
                 </div>
               </a>
 
-               <a class="dropdown-item" href="{{URL::TO('/studentLogout')}}">
+               <a class="dropdown-item" href="{{URL::TO('/adminlogout')}}">
                 <div class="sender-img">
                   <img src="/admin/images/logout.png" alt="">
             
@@ -150,51 +143,52 @@
           <div class="user-info">
             <div class="profile">
        {{--        <img src="admin/images/pro1.png" alt=""> --}}
-              <img src={{ $student_profile_view->student_image }} alt="">
+              <img src={{-- {{ $student_profile_view->student_image }} --}} alt="">
              {{-- <p class="user-name">{{ $student_profile_view->student_image }}</p> --}}
             </div>
             <div class="details">
-              <p class="user-name">{{ strtoupper($student_profile_view->student_name)  }}</p>
+              <p class="user-name">{{-- {{ strtoupper($student_profile_view->student_name)  }} --}}</p>
               <p class="designation">{{-- Developer --}}</p>
             </div>
           </div>
           <ul class="nav">
             <!--main pages start-->
-            <li class="nav-item nav-category">
-              <span class="nav-link">Main</span>
-            </li>
+            
             <li class="nav-item">
-              <a class="nav-link" href="{{URL::TO('/student_profile')}}">
+              <a class="nav-link" href="{{URL::TO('/admin_profile')}}">
                 <i class="mdi mdi-gauge menu-icon"></i>
-                <span class="menu-title">profile</span>
+                <span class="menu-title">view profile</span>
               </a>
             </li>
+
+
+
             <li class="nav-item">
-              <a class="nav-link" href="{{URL::TO('/studentsettings')}}">
+              <a class="nav-link" href="{{URL::TO('/admin_jobpost')}}">
                 <i class="mdi mdi-puzzle menu-icon"></i>
-                <span class="menu-title">settings</span>
+                <span class="menu-title">Job post</span>
                 <span class="badge badge-danger badge-pill ml-auto">New</span>
               </a>
             </li>
-           {{--  <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#layoutsSubmenu" aria-expanded="false" aria-controls="layoutsSubmenu">
+
+
+               <li class="nav-item">
+              <a class="nav-link" href="{{URL::TO('/admin_submitted_job_list')}}">
                 <i class="mdi mdi-arrow-expand-all menu-icon"></i>
-                <span class="menu-title">Student Information </span>
-                <i class="mdi mdi-chevron-down menu-arrow"></i>
+                <span class="menu-title">View job post</span>
               </a>
-              <div class="collapse" id="layoutsSubmenu">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{URL::TO('/tution_fee')}}">Tution Fee</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="pages/layout/rtl-layout.html">Result</a>
-                  </li>
-                  
-                </ul>
-              </div>
+              </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{{URL::TO('/admin_view_application')}}">
+                <i class="mdi mdi-arrow-expand-all menu-icon"></i>
+                <span class="menu-title">View application</span>
+              </a>
             </li>
-       --}}
+
+
+            
+        
             
           
             <!--Apps start-->
@@ -247,7 +241,7 @@
         <footer class="footer">
           <div class="container-fluid clearfix">
             <span class="float-right">
-                <a href="#">Salt Admin</a> &copy; 2017
+                <a href="{{URL::TO('https://www.linkedin.com/in/sumon-islam/')}}">motaleb hossain sumon</a> <a href="{{URL::TO('https://github.com/sumondev')}}">github</a>  &copy; 2019
             </span>
           </div>
         </footer>
