@@ -36,9 +36,61 @@ class Admin_JOb_post_Controller extends Controller
                // return Redirect::to('/admin_submitted_job_list'); 
 
 
-
-
     }
+
+
+
+    public function delete_job_submit($job_id){
+
+
+    
+
+      DB::table('admin_job_post_tbl')->where('job_id',$job_id)->delete();
+
+      Session::put('message','Delete job_post Successfully!!');
+
+      return Redirect::to('/admin_submitted_job_list');
+    }
+
+
+
+
+
+
+
+
+
+
+/* admin submitted ppost show method*/
+
+
+    public function  admin_submitted_post(){
+
+        // return view('admin.admin_jobpost_list');
+
+
+ 
+
+
+        $post_info= DB::table('admin_job_post_tbl')->get();
+
+
+        // var_dump($post_info);
+
+
+          $manage_post=view('admin.admin_jobpost_list')->with('job_post_info',$post_info);  
+        
+           return view('admin.admin_layout')->with('admin_jobpost_list',$manage_post);
+              /*job_post_info is uded for job post list main representator in admin_jobpost_list page*/
+
+
+
+
+      
+    }
+
+
+
 
 
 

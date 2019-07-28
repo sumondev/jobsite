@@ -1,9 +1,9 @@
-{{-- @extends('admin.admin_layout') --}}
+@extends('admin.admin_layout')
 @section('content')
 
-  <div class="container-fluid">
+  <div class="container" align="center">
           <div class="row user-profile">
-            <div class="col-lg-8 side-left">
+            <div class="col-lg-12 side-left">
             
               <div class="card mb-6">
                 <div class="card-body overview">
@@ -28,16 +28,76 @@
 
 {{-- table start --}}
 
+
+
+
+
+
 				<div class="container-fluid">
 					
 					   <tbody>
 									
                   <table id="" class="table table-striped" style="width:100%;">
-                 {{--    <thead> --}}
+
+       {{-- 
+                      <tr>
+                          <th>first_name</th>
+                          <th>last_name</th>
+                          <th>job_location</th>
+                          <th>job_country</th>
+                      
+                         
+                      </tr>
+                 
+
+
+
+        @foreach($admin_description_profile as $sdmin_view)   
+                      <tr>
+                          
+                          <td>{{$sdmin_view->admin_first_name}}</td> 
+                            <td>{{$sdmin_view->admin_last_name}}</td>
+                              <td>{{$sdmin_view->admin_business_name}}</td>
+                                 <td>{{$sdmin_view->admin_email}}</td>
+
+                    
+                        
+                      </tr>
+     
+                  @endforeach  
+
+ --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <thead>
                       <tr>
                          
                           <th>First Name</th>
-                          		
+
+
                           	    <td>{{$admin_description_profile->admin_first_name}}</td>
                        </tr>
 
@@ -73,7 +133,7 @@
                     
 
 
-               {{--      </thead> --}}
+                    </thead>
                  
                  
                      

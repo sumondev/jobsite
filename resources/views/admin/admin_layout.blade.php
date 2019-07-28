@@ -284,13 +284,34 @@
   <!-- Custom js for this page-->
   <script src="{{asset('/admin/js/dashboard_1.js')}}"></script>
   <!-- End custom js for this page-->
-/
+
 
     <!-- javascript modal is used for delete conformation -->
 
 
 
+    <!-- javascript modal is used for delete conformation -->
+
+    <script src="{{('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js')}}"></script>
+
 </body>
+
+<!--  javascript modal is used for delete conformation start -->
+
+<script>
+    $(document).on("click","#delete", function(e){
+  e.preventDefault();
+  var link = $(this).attr("href");
+   bootbox.confirm("Are you want to delete?", function(result) {
+    if (result) {
+      window.location.href = link;
+    };
+  });
+});
+</script>
+
+
+
 
 
 

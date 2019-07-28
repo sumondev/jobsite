@@ -35,12 +35,6 @@ public function saveadmin(Request $request){
 
 
 
-
-               
-
-       
-
-
          }
 
 }

@@ -56,11 +56,15 @@ Route::get ('/admin_jobpost','Admin_Dash_Board_Controller@admin_job_post');
 /*Admin_job post acess value */
 Route::post('/save_job','Admin_JOb_post_Controller@save_job'); 
 
+Route::get ('/delete_submitted_job/{job_id}','Admin_JOb_post_Controller@delete_job_submit');
+/*'/delet_contact/{id} here id used for Allstudent controller delet operation with this id */
+
+
 
 
 /*to show admin submitted job post*/
 
-Route::get ('/admin_submitted_job_list','Admin_Dash_Board_Controller@admin_submitted_post');
+Route::get ('/admin_submitted_job_list','Admin_JOb_post_Controller@admin_submitted_post');
 
 /*view applicant submited list*/
 

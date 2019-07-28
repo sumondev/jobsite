@@ -24,11 +24,11 @@ class Admin_Dash_Board_Controller extends Controller
 
       $admin_id=Session::get('admin_id');
       
-      $admin_profile_view=DB::table('admin_tbl')
-                   ->select('*')
-                   ->where('admin_id',$admin_id)
-                   ->first();
-
+      // $admin_profile_view=DB::table('admin_tbl')
+      //              ->select('*')
+      //              ->where('admin_id',$admin_id)
+      //              ->first();
+    $admin_profile_view= DB::table('admin_tbl')->first();
 
    
 
@@ -39,11 +39,9 @@ class Admin_Dash_Board_Controller extends Controller
                 //     echo "</pre>";
 
 
-          $manage_admin=view('admin.admin_profile')
-              ->with('admin_description_profile',$admin_profile_view); 
+          $manage_admin=view('admin.admin_profile')->with('admin_description_profile',$admin_profile_view); 
         //admin_description_profile is uded for  admin profile view main representator in view page
-          return view('admin.admin_layout')
-            ->with('admin_profile',$manage_admin);
+          return view('admin.admin_layout')->with('admin_profile',$manage_admin);
      
     }
 
@@ -63,10 +61,6 @@ class Admin_Dash_Board_Controller extends Controller
 
    
 
-    public function  admin_submitted_post(){
-
-        return view('admin.admin_jobpost_list');
-    }
     
 
 
